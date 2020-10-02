@@ -17,8 +17,4 @@ function Nav() {
   );
 }
 
-interface dataT {
-  id: Array<string>;
-}
-
 export default Nav;

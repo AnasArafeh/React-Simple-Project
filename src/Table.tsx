@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import {
   Button,
@@ -9,60 +8,22 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import dataT from "./types";
+import { dataT } from "./types";
 import InsertData from "./form";
 import { Link } from "react-router-dom";
-import { OriginalData, DataContext } from "./oData";
-
-//const id1: number = uuid();
+import { LessonsContext } from "./InitialState";
 
 function TableName() {
-  const try100 = useContext(DataContext);
+  const LessonContext = useContext(LessonsContext);
 
-  // console.log(try100);
-  console.log("try this");
-  console.log(try100.state.statex);
-  const x = try100.state.statex;
-
-  // if (x) {
-  //   console.log(x.id);
-  // }
+  const LessonState = LessonContext.state.statex;
 
   const [lessons, setLessons] = useState<dataT[]>([]);
 
   useEffect(() => {
-    // console.log("useEffect");
-    // console.log(x);
+    setLessons(LessonState);
+  }, [LessonState]);
 
-    {
-      x.map((c) =>
-        setLessons((prevLessons) => [
-          ...prevLessons,
-          {
-            id: c.id,
-            name: c.name,
-            mobile: c.mobile,
-            address: c.address,
-          },
-        ])
-      );
-    }
-  }, [try100]);
-
-  // const addData = () => {
-  //   setLessons((prevLessons) => [
-  //     ...prevLessons,
-  //     { id: 0, name: "", mobile: "", address: "" },
-  //   ]);
-  // };
-
-  //fix these
-  // const xxx = useContext(DataContext);
-
-  // useEffect(() => {
-  //   console.log(xxx);
-  // });
-  // console.log(xxx);
   return (
     <div className="new">
       <Table>
